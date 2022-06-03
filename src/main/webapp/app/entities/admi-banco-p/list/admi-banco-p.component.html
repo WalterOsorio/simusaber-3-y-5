@@ -1,0 +1,80 @@
+<div>
+  <h2 id="page-heading" data-cy="AdmiBancoPHeading">
+    <span ss35Translate="simuSaber3Y5App.admiBancoP.home.title">Admi Banco PS</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="loadAll()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span ss35Translate="simuSaber3Y5App.admiBancoP.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-admi-banco-p"
+        [routerLink]="['/admi-banco-p/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span ss35Translate="simuSaber3Y5App.admiBancoP.home.createLabel"> Create a new Admi Banco P </span>
+      </button>
+    </div>
+  </h2>
+
+  <ss-35-alert-error></ss-35-alert-error>
+
+  <ss-35-alert></ss-35-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="admiBancoPS?.length === 0">
+    <span ss35Translate="simuSaber3Y5App.admiBancoP.home.notFound">No admiBancoPS found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="admiBancoPS && admiBancoPS.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr>
+          <th scope="col"><span ss35Translate="global.field.id">ID</span></th>
+          <th scope="col"><span ss35Translate="simuSaber3Y5App.admiBancoP.idAdministrador">Id Administrador</span></th>
+          <th scope="col"><span ss35Translate="simuSaber3Y5App.admiBancoP.idBancoPregunta">Id Banco Pregunta</span></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let admiBancoP of admiBancoPS; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/admi-banco-p', admiBancoP.id, 'view']">{{ admiBancoP.id }}</a>
+          </td>
+          <td>{{ admiBancoP.idAdministrador }}</td>
+          <td>{{ admiBancoP.idBancoPregunta }}</td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/admi-banco-p', admiBancoP.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" ss35Translate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/admi-banco-p', admiBancoP.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" ss35Translate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(admiBancoP)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" ss35Translate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

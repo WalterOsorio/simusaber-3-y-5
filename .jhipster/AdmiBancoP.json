@@ -1,0 +1,37 @@
+{
+  "applications": ["SimuSaber3y5"],
+  "changelogDate": "20220603033736",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "admi_banco_p",
+  "fields": [
+    {
+      "fieldName": "idAdministrador",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "idBancoPregunta",
+      "fieldType": "Integer"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "AdmiBancoP",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "administrador",
+      "otherEntityRelationshipName": "admiBancoP",
+      "relationshipName": "administrador",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "bancoPregunta",
+      "otherEntityRelationshipName": "admiBancoP",
+      "relationshipName": "bancoPregunta",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "service": "no"
+}

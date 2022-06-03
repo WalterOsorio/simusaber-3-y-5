@@ -1,0 +1,94 @@
+<div>
+  <h2 id="page-heading" data-cy="SalaHeading">
+    <span ss35Translate="simuSaber3Y5App.sala.home.title">Salas</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="loadAll()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span ss35Translate="simuSaber3Y5App.sala.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-sala"
+        [routerLink]="['/sala/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span ss35Translate="simuSaber3Y5App.sala.home.createLabel"> Create a new Sala </span>
+      </button>
+    </div>
+  </h2>
+
+  <ss-35-alert-error></ss-35-alert-error>
+
+  <ss-35-alert></ss-35-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="salas?.length === 0">
+    <span ss35Translate="simuSaber3Y5App.sala.home.notFound">No salas found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="salas && salas.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr>
+          <th scope="col"><span ss35Translate="global.field.id">ID</span></th>
+          <th scope="col"><span ss35Translate="simuSaber3Y5App.sala.estado">Estado</span></th>
+          <th scope="col"><span ss35Translate="simuSaber3Y5App.sala.materia">Materia</span></th>
+          <th scope="col"><span ss35Translate="simuSaber3Y5App.sala.numeroEstudiantes">Numero Estudiantes</span></th>
+          <th scope="col"><span ss35Translate="simuSaber3Y5App.sala.resultados">Resultados</span></th>
+          <th scope="col"><span ss35Translate="simuSaber3Y5App.sala.retroalimentacion">Retroalimentacion</span></th>
+          <th scope="col"><span ss35Translate="simuSaber3Y5App.sala.salaMateria">Sala Materia</span></th>
+          <th scope="col"><span ss35Translate="simuSaber3Y5App.sala.docente">Docente</span></th>
+          <th scope="col"><span ss35Translate="simuSaber3Y5App.sala.estudianteSala">Estudiante Sala</span></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let sala of salas; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/sala', sala.id, 'view']">{{ sala.id }}</a>
+          </td>
+          <td ss35Translate="{{ 'simuSaber3Y5App.State.' + sala.estado }}">{{ sala.estado }}</td>
+          <td>{{ sala.materia }}</td>
+          <td>{{ sala.numeroEstudiantes }}</td>
+          <td>{{ sala.resultados }}</td>
+          <td>{{ sala.retroalimentacion }}</td>
+          <td>
+            <div *ngIf="sala.salaMateria">
+              <a [routerLink]="['/sala-materia', sala.salaMateria?.id, 'view']">{{ sala.salaMateria?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="sala.docente">
+              <a [routerLink]="['/docente', sala.docente?.id, 'view']">{{ sala.docente?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="sala.estudianteSala">
+              <a [routerLink]="['/estudiante-sala', sala.estudianteSala?.id, 'view']">{{ sala.estudianteSala?.id }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button type="submit" [routerLink]="['/sala', sala.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" ss35Translate="entity.action.view">View</span>
+              </button>
+
+              <button type="submit" [routerLink]="['/sala', sala.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" ss35Translate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(sala)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" ss35Translate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

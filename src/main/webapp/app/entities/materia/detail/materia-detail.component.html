@@ -1,0 +1,52 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="materia">
+      <h2 data-cy="materiaDetailsHeading"><span ss35Translate="simuSaber3Y5App.materia.detail.title">Materia</span></h2>
+
+      <hr />
+
+      <ss-35-alert-error></ss-35-alert-error>
+
+      <ss-35-alert></ss-35-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span ss35Translate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ materia.id }}</span>
+        </dd>
+        <dt><span ss35Translate="simuSaber3Y5App.materia.nombreMateria">Nombre Materia</span></dt>
+        <dd>
+          <span>{{ materia.nombreMateria }}</span>
+        </dd>
+        <dt><span ss35Translate="simuSaber3Y5App.materia.numeroPreguntas">Numero Preguntas</span></dt>
+        <dd>
+          <span>{{ materia.numeroPreguntas }}</span>
+        </dd>
+        <dt><span ss35Translate="simuSaber3Y5App.materia.pregunta">Pregunta</span></dt>
+        <dd>
+          <span>{{ materia.pregunta }}</span>
+        </dd>
+        <dt><span ss35Translate="simuSaber3Y5App.materia.docenteMateria">Docente Materia</span></dt>
+        <dd>
+          <div *ngIf="materia.docenteMateria">
+            <a [routerLink]="['/docente-materia', materia.docenteMateria?.id, 'view']">{{ materia.docenteMateria?.id }}</a>
+          </div>
+        </dd>
+        <dt><span ss35Translate="simuSaber3Y5App.materia.salaMateria">Sala Materia</span></dt>
+        <dd>
+          <div *ngIf="materia.salaMateria">
+            <a [routerLink]="['/sala-materia', materia.salaMateria?.id, 'view']">{{ materia.salaMateria?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span ss35Translate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/materia', materia.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span ss35Translate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

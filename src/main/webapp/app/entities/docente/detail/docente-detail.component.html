@@ -1,0 +1,52 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="docente">
+      <h2 data-cy="docenteDetailsHeading"><span ss35Translate="simuSaber3Y5App.docente.detail.title">Docente</span></h2>
+
+      <hr />
+
+      <ss-35-alert-error></ss-35-alert-error>
+
+      <ss-35-alert></ss-35-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span ss35Translate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ docente.id }}</span>
+        </dd>
+        <dt><span ss35Translate="simuSaber3Y5App.docente.colegio">Colegio</span></dt>
+        <dd>
+          <span>{{ docente.colegio }}</span>
+        </dd>
+        <dt><span ss35Translate="simuSaber3Y5App.docente.materia">Materia</span></dt>
+        <dd>
+          <span>{{ docente.materia }}</span>
+        </dd>
+        <dt><span ss35Translate="simuSaber3Y5App.docente.ciudad">Ciudad</span></dt>
+        <dd>
+          <span>{{ docente.ciudad }}</span>
+        </dd>
+        <dt><span ss35Translate="simuSaber3Y5App.docente.userData">User Data</span></dt>
+        <dd>
+          <div *ngIf="docente.userData">
+            <a [routerLink]="['/user-data', docente.userData?.id, 'view']">{{ docente.userData?.id }}</a>
+          </div>
+        </dd>
+        <dt><span ss35Translate="simuSaber3Y5App.docente.docenteMateria">Docente Materia</span></dt>
+        <dd>
+          <div *ngIf="docente.docenteMateria">
+            <a [routerLink]="['/docente-materia', docente.docenteMateria?.id, 'view']">{{ docente.docenteMateria?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span ss35Translate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/docente', docente.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span ss35Translate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

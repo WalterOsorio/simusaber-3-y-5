@@ -1,0 +1,90 @@
+<div>
+  <h2 id="page-heading" data-cy="AdministradorHeading">
+    <span ss35Translate="simuSaber3Y5App.administrador.home.title">Administradors</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="loadAll()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span ss35Translate="simuSaber3Y5App.administrador.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-administrador"
+        [routerLink]="['/administrador/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span ss35Translate="simuSaber3Y5App.administrador.home.createLabel"> Create a new Administrador </span>
+      </button>
+    </div>
+  </h2>
+
+  <ss-35-alert-error></ss-35-alert-error>
+
+  <ss-35-alert></ss-35-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="administradors?.length === 0">
+    <span ss35Translate="simuSaber3Y5App.administrador.home.notFound">No administradors found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="administradors && administradors.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr>
+          <th scope="col"><span ss35Translate="global.field.id">ID</span></th>
+          <th scope="col"><span ss35Translate="simuSaber3Y5App.administrador.nivelAcceso">Nivel Acceso</span></th>
+          <th scope="col"><span ss35Translate="simuSaber3Y5App.administrador.userData">User Data</span></th>
+          <th scope="col"><span ss35Translate="simuSaber3Y5App.administrador.admiBancoP">Admi Banco P</span></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let administrador of administradors; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/administrador', administrador.id, 'view']">{{ administrador.id }}</a>
+          </td>
+          <td>{{ administrador.nivelAcceso }}</td>
+          <td>
+            <div *ngIf="administrador.userData">
+              <a [routerLink]="['/user-data', administrador.userData?.id, 'view']">{{ administrador.userData?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="administrador.admiBancoP">
+              <a [routerLink]="['/admi-banco-p', administrador.admiBancoP?.id, 'view']">{{ administrador.admiBancoP?.id }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/administrador', administrador.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" ss35Translate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/administrador', administrador.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" ss35Translate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(administrador)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" ss35Translate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,42 @@
+{
+  "applications": ["SimuSaber3y5"],
+  "changelogDate": "20220603032536",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "tipo_documento",
+  "fields": [
+    {
+      "fieldName": "iniciales",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "maxlength"],
+      "fieldValidateRulesMaxlength": "12"
+    },
+    {
+      "fieldName": "nombreDocumento",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "maxlength"],
+      "fieldValidateRulesMaxlength": "50"
+    },
+    {
+      "fieldName": "estadoTipoDocumento",
+      "fieldType": "State",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "Active (Activo),INACTIVE (Inactivo)"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "TipoDocumento",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "userData",
+      "otherEntityRelationshipName": "tipoDocumento",
+      "ownerSide": false,
+      "relationshipName": "userData",
+      "relationshipType": "one-to-one"
+    }
+  ],
+  "service": "no"
+}

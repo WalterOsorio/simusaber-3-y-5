@@ -1,0 +1,27 @@
+{
+  "simuSaber3Y5App": {
+    "admiBancoP": {
+      "home": {
+        "title": "Admi Banco PS",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Admi Banco P",
+        "createOrEditLabel": "Create or edit a Admi Banco P",
+        "notFound": "No Admi Banco PS found"
+      },
+      "created": "A new Admi Banco P is created with identifier {{ param }}",
+      "updated": "A Admi Banco P is updated with identifier {{ param }}",
+      "deleted": "A Admi Banco P is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Admi Banco P {{ id }}?"
+      },
+      "detail": {
+        "title": "Admi Banco P"
+      },
+      "id": "ID",
+      "idAdministrador": "Id Administrador",
+      "idBancoPregunta": "Id Banco Pregunta",
+      "administrador": "Administrador",
+      "bancoPregunta": "Banco Pregunta"
+    }
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "simuSaber3Y5App": {
+    "estudiante": {
+      "home": {
+        "title": "Estudiantes",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Estudiante",
+        "createOrEditLabel": "Crear o editar Estudiante",
+        "notFound": "Ningún Estudiantes encontrado"
+      },
+      "created": "Un nuevo Estudiante ha sido creado con el identificador {{ param }}",
+      "updated": "Un Estudiante ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Estudiante ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Estudiante {{ id }}?"
+      },
+      "detail": {
+        "title": "Estudiante"
+      },
+      "id": "ID",
+      "grado": "Grado",
+      "colegio": "Colegio",
+      "fechaNacimiento": "Fecha Nacimiento",
+      "ciudad": "Ciudad",
+      "userData": "User Data",
+      "prueba": "Prueba",
+      "pruebaApoyo": "Prueba Apoyo",
+      "sala": "Sala",
+      "estudianteSala": "Estudiante Sala"
+    }
+  }
+}

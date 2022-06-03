@@ -1,0 +1,29 @@
+{
+  "simuSaber3Y5App": {
+    "prueba": {
+      "home": {
+        "title": "Pruebas",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Prueba",
+        "createOrEditLabel": "Crear o editar Prueba",
+        "notFound": "Ningún Pruebas encontrado"
+      },
+      "created": "Un nuevo Prueba ha sido creado con el identificador {{ param }}",
+      "updated": "Un Prueba ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Prueba ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Prueba {{ id }}?"
+      },
+      "detail": {
+        "title": "Prueba"
+      },
+      "id": "ID",
+      "fechaAplicacion": "Fecha Aplicacion",
+      "resultado": "Resultado",
+      "retroalimentacion": "Retroalimentacion",
+      "estudiante": "Estudiante",
+      "bancoPregunta": "Banco Pregunta",
+      "sala": "Sala"
+    }
+  }
+}

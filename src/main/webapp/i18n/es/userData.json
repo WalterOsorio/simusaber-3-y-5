@@ -1,0 +1,29 @@
+{
+  "simuSaber3Y5App": {
+    "userData": {
+      "home": {
+        "title": "User Data",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo User Data",
+        "createOrEditLabel": "Crear o editar User Data",
+        "notFound": "Ningún User Data encontrado"
+      },
+      "created": "Un nuevo User Data ha sido creado con el identificador {{ param }}",
+      "updated": "Un User Data ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un User Data ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar User Data {{ id }}?"
+      },
+      "detail": {
+        "title": "User Data"
+      },
+      "id": "ID",
+      "numeroDocumento": "Numero Documento",
+      "tipoDocumento": "Tipo Documento",
+      "user": "User",
+      "docente": "Docente",
+      "estudiante": "Estudiante",
+      "administrador": "Administrador"
+    }
+  }
+}

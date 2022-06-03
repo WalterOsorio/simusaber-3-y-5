@@ -1,0 +1,28 @@
+{
+  "simuSaber3Y5App": {
+    "materia": {
+      "home": {
+        "title": "Materias",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Materia",
+        "createOrEditLabel": "Crear o editar Materia",
+        "notFound": "Ningún Materias encontrado"
+      },
+      "created": "Un nuevo Materia ha sido creado con el identificador {{ param }}",
+      "updated": "Un Materia ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Materia ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Materia {{ id }}?"
+      },
+      "detail": {
+        "title": "Materia"
+      },
+      "id": "ID",
+      "nombreMateria": "Nombre Materia",
+      "numeroPreguntas": "Numero Preguntas",
+      "pregunta": "Pregunta",
+      "docenteMateria": "Docente Materia",
+      "salaMateria": "Sala Materia"
+    }
+  }
+}

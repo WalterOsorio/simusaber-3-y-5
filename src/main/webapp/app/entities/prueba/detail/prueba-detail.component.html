@@ -1,0 +1,58 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="prueba">
+      <h2 data-cy="pruebaDetailsHeading"><span ss35Translate="simuSaber3Y5App.prueba.detail.title">Prueba</span></h2>
+
+      <hr />
+
+      <ss-35-alert-error></ss-35-alert-error>
+
+      <ss-35-alert></ss-35-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span ss35Translate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ prueba.id }}</span>
+        </dd>
+        <dt><span ss35Translate="simuSaber3Y5App.prueba.fechaAplicacion">Fecha Aplicacion</span></dt>
+        <dd>
+          <span>{{ prueba.fechaAplicacion | formatMediumDate }}</span>
+        </dd>
+        <dt><span ss35Translate="simuSaber3Y5App.prueba.resultado">Resultado</span></dt>
+        <dd>
+          <span>{{ prueba.resultado }}</span>
+        </dd>
+        <dt><span ss35Translate="simuSaber3Y5App.prueba.retroalimentacion">Retroalimentacion</span></dt>
+        <dd>
+          <span>{{ prueba.retroalimentacion }}</span>
+        </dd>
+        <dt><span ss35Translate="simuSaber3Y5App.prueba.estudiante">Estudiante</span></dt>
+        <dd>
+          <div *ngIf="prueba.estudiante">
+            <a [routerLink]="['/estudiante', prueba.estudiante?.id, 'view']">{{ prueba.estudiante?.id }}</a>
+          </div>
+        </dd>
+        <dt><span ss35Translate="simuSaber3Y5App.prueba.bancoPregunta">Banco Pregunta</span></dt>
+        <dd>
+          <div *ngIf="prueba.bancoPregunta">
+            <a [routerLink]="['/banco-pregunta', prueba.bancoPregunta?.id, 'view']">{{ prueba.bancoPregunta?.id }}</a>
+          </div>
+        </dd>
+        <dt><span ss35Translate="simuSaber3Y5App.prueba.sala">Sala</span></dt>
+        <dd>
+          <div *ngIf="prueba.sala">
+            <a [routerLink]="['/sala', prueba.sala?.id, 'view']">{{ prueba.sala?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span ss35Translate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/prueba', prueba.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span ss35Translate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

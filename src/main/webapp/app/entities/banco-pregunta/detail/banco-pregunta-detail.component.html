@@ -1,0 +1,54 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="bancoPregunta">
+      <h2 data-cy="bancoPreguntaDetailsHeading"><span ss35Translate="simuSaber3Y5App.bancoPregunta.detail.title">Banco Pregunta</span></h2>
+
+      <hr />
+
+      <ss-35-alert-error></ss-35-alert-error>
+
+      <ss-35-alert></ss-35-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span ss35Translate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ bancoPregunta.id }}</span>
+        </dd>
+        <dt><span ss35Translate="simuSaber3Y5App.bancoPregunta.descripcion">Descripcion</span></dt>
+        <dd>
+          <span>{{ bancoPregunta.descripcion }}</span>
+        </dd>
+        <dt><span ss35Translate="simuSaber3Y5App.bancoPregunta.fechaActualizacion">Fecha Actualizacion</span></dt>
+        <dd>
+          <span>{{ bancoPregunta.fechaActualizacion | formatMediumDate }}</span>
+        </dd>
+        <dt><span ss35Translate="simuSaber3Y5App.bancoPregunta.materia">Materia</span></dt>
+        <dd>
+          <span>{{ bancoPregunta.materia }}</span>
+        </dd>
+        <dt><span ss35Translate="simuSaber3Y5App.bancoPregunta.numeroPreguntas">Numero Preguntas</span></dt>
+        <dd>
+          <span>{{ bancoPregunta.numeroPreguntas }}</span>
+        </dd>
+        <dt><span ss35Translate="simuSaber3Y5App.bancoPregunta.pregunta">Pregunta</span></dt>
+        <dd>
+          <span>{{ bancoPregunta.pregunta }}</span>
+        </dd>
+        <dt><span ss35Translate="simuSaber3Y5App.bancoPregunta.admiBancoP">Admi Banco P</span></dt>
+        <dd>
+          <div *ngIf="bancoPregunta.admiBancoP">
+            <a [routerLink]="['/admi-banco-p', bancoPregunta.admiBancoP?.id, 'view']">{{ bancoPregunta.admiBancoP?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span ss35Translate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/banco-pregunta', bancoPregunta.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span ss35Translate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,27 @@
+{
+  "simuSaber3Y5App": {
+    "salaMateria": {
+      "home": {
+        "title": "Sala Materias",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Sala Materia",
+        "createOrEditLabel": "Crear o editar Sala Materia",
+        "notFound": "Ningún Sala Materias encontrado"
+      },
+      "created": "Un nuevo Sala Materia ha sido creado con el identificador {{ param }}",
+      "updated": "Un Sala Materia ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Sala Materia ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Sala Materia {{ id }}?"
+      },
+      "detail": {
+        "title": "Sala Materia"
+      },
+      "id": "ID",
+      "idSala": "Id Sala",
+      "idMateria": "Id Materia",
+      "sala": "Sala",
+      "materia": "Materia"
+    }
+  }
+}

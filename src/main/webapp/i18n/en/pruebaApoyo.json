@@ -1,0 +1,29 @@
+{
+  "simuSaber3Y5App": {
+    "pruebaApoyo": {
+      "home": {
+        "title": "Prueba Apoyos",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Prueba Apoyo",
+        "createOrEditLabel": "Create or edit a Prueba Apoyo",
+        "notFound": "No Prueba Apoyos found"
+      },
+      "created": "A new Prueba Apoyo is created with identifier {{ param }}",
+      "updated": "A Prueba Apoyo is updated with identifier {{ param }}",
+      "deleted": "A Prueba Apoyo is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Prueba Apoyo {{ id }}?"
+      },
+      "detail": {
+        "title": "Prueba Apoyo"
+      },
+      "id": "ID",
+      "materia": "Materia",
+      "pregunta": "Pregunta",
+      "resultado": "Resultado",
+      "retroalimentacion": "Retroalimentacion",
+      "estudiante": "Estudiante",
+      "bancoPregunta": "Banco Pregunta"
+    }
+  }
+}

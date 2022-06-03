@@ -1,0 +1,27 @@
+{
+  "simuSaber3Y5App": {
+    "estudianteSala": {
+      "home": {
+        "title": "Estudiante Salas",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Estudiante Sala",
+        "createOrEditLabel": "Crear o editar Estudiante Sala",
+        "notFound": "Ningún Estudiante Salas encontrado"
+      },
+      "created": "Un nuevo Estudiante Sala ha sido creado con el identificador {{ param }}",
+      "updated": "Un Estudiante Sala ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Estudiante Sala ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Estudiante Sala {{ id }}?"
+      },
+      "detail": {
+        "title": "Estudiante Sala"
+      },
+      "id": "ID",
+      "idEstudiante": "Id Estudiante",
+      "idSala": "Id Sala",
+      "estudiante": "Estudiante",
+      "sala": "Sala"
+    }
+  }
+}

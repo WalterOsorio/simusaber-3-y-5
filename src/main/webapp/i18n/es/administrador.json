@@ -1,0 +1,26 @@
+{
+  "simuSaber3Y5App": {
+    "administrador": {
+      "home": {
+        "title": "Administradors",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Administrador",
+        "createOrEditLabel": "Crear o editar Administrador",
+        "notFound": "Ningún Administradors encontrado"
+      },
+      "created": "Un nuevo Administrador ha sido creado con el identificador {{ param }}",
+      "updated": "Un Administrador ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Administrador ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Administrador {{ id }}?"
+      },
+      "detail": {
+        "title": "Administrador"
+      },
+      "id": "ID",
+      "nivelAcceso": "Nivel Acceso",
+      "userData": "User Data",
+      "admiBancoP": "Admi Banco P"
+    }
+  }
+}

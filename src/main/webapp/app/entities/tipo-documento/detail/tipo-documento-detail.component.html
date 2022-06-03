@@ -1,0 +1,42 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="tipoDocumento">
+      <h2 data-cy="tipoDocumentoDetailsHeading"><span ss35Translate="simuSaber3Y5App.tipoDocumento.detail.title">Tipo Documento</span></h2>
+
+      <hr />
+
+      <ss-35-alert-error></ss-35-alert-error>
+
+      <ss-35-alert></ss-35-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span ss35Translate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ tipoDocumento.id }}</span>
+        </dd>
+        <dt><span ss35Translate="simuSaber3Y5App.tipoDocumento.iniciales">Iniciales</span></dt>
+        <dd>
+          <span>{{ tipoDocumento.iniciales }}</span>
+        </dd>
+        <dt><span ss35Translate="simuSaber3Y5App.tipoDocumento.nombreDocumento">Nombre Documento</span></dt>
+        <dd>
+          <span>{{ tipoDocumento.nombreDocumento }}</span>
+        </dd>
+        <dt><span ss35Translate="simuSaber3Y5App.tipoDocumento.estadoTipoDocumento">Estado Tipo Documento</span></dt>
+        <dd>
+          <span ss35Translate="{{ 'simuSaber3Y5App.State.' + tipoDocumento.estadoTipoDocumento }}">{{
+            tipoDocumento.estadoTipoDocumento
+          }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span ss35Translate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/tipo-documento', tipoDocumento.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span ss35Translate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

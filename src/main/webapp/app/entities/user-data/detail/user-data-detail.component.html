@@ -1,0 +1,42 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="userData">
+      <h2 data-cy="userDataDetailsHeading"><span ss35Translate="simuSaber3Y5App.userData.detail.title">User Data</span></h2>
+
+      <hr />
+
+      <ss-35-alert-error></ss-35-alert-error>
+
+      <ss-35-alert></ss-35-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span ss35Translate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ userData.id }}</span>
+        </dd>
+        <dt><span ss35Translate="simuSaber3Y5App.userData.numeroDocumento">Numero Documento</span></dt>
+        <dd>
+          <span>{{ userData.numeroDocumento }}</span>
+        </dd>
+        <dt><span ss35Translate="simuSaber3Y5App.userData.tipoDocumento">Tipo Documento</span></dt>
+        <dd>
+          <div *ngIf="userData.tipoDocumento">
+            <a [routerLink]="['/tipo-documento', userData.tipoDocumento?.id, 'view']">{{ userData.tipoDocumento?.id }}</a>
+          </div>
+        </dd>
+        <dt><span ss35Translate="simuSaber3Y5App.userData.user">User</span></dt>
+        <dd>
+          <span>{{ userData.user?.id }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span ss35Translate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/user-data', userData.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span ss35Translate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

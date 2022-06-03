@@ -1,0 +1,37 @@
+{
+  "applications": ["SimuSaber3y5"],
+  "changelogDate": "20220603033836",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "estudiante_sala",
+  "fields": [
+    {
+      "fieldName": "idEstudiante",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "idSala",
+      "fieldType": "Integer"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "EstudianteSala",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "estudiante",
+      "otherEntityRelationshipName": "estudianteSala",
+      "relationshipName": "estudiante",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "sala",
+      "otherEntityRelationshipName": "estudianteSala",
+      "relationshipName": "sala",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "service": "no"
+}

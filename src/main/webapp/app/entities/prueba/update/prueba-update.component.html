@@ -1,0 +1,147 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="ss-35-prueba-heading" data-cy="PruebaCreateUpdateHeading" ss35Translate="simuSaber3Y5App.prueba.home.createOrEditLabel">
+        Create or edit a Prueba
+      </h2>
+
+      <div>
+        <ss-35-alert-error></ss-35-alert-error>
+
+        <div class="row mb-3" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-label" ss35Translate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" ss35Translate="simuSaber3Y5App.prueba.fechaAplicacion" for="field_fechaAplicacion"
+            >Fecha Aplicacion</label
+          >
+          <div class="input-group">
+            <input
+              id="field_fechaAplicacion"
+              data-cy="fechaAplicacion"
+              type="text"
+              class="form-control"
+              name="fechaAplicacion"
+              ngbDatepicker
+              #fechaAplicacionDp="ngbDatepicker"
+              formControlName="fechaAplicacion"
+            />
+            <button type="button" class="btn btn-secondary" (click)="fechaAplicacionDp.toggle()">
+              <fa-icon icon="calendar-alt"></fa-icon>
+            </button>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" ss35Translate="simuSaber3Y5App.prueba.resultado" for="field_resultado">Resultado</label>
+          <input type="number" class="form-control" name="resultado" id="field_resultado" data-cy="resultado" formControlName="resultado" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" ss35Translate="simuSaber3Y5App.prueba.retroalimentacion" for="field_retroalimentacion"
+            >Retroalimentacion</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="retroalimentacion"
+            id="field_retroalimentacion"
+            data-cy="retroalimentacion"
+            formControlName="retroalimentacion"
+          />
+          <div
+            *ngIf="
+              editForm.get('retroalimentacion')!.invalid &&
+              (editForm.get('retroalimentacion')!.dirty || editForm.get('retroalimentacion')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('retroalimentacion')?.errors?.required"
+              ss35Translate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('retroalimentacion')?.errors?.maxlength"
+              ss35Translate="entity.validation.maxlength"
+              [translateValues]="{ max: 256 }"
+            >
+              This field cannot be longer than 256 characters.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" ss35Translate="simuSaber3Y5App.prueba.estudiante" for="field_estudiante">Estudiante</label>
+          <select class="form-control" id="field_estudiante" data-cy="estudiante" name="estudiante" formControlName="estudiante">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                estudianteOption.id === editForm.get('estudiante')!.value?.id ? editForm.get('estudiante')!.value : estudianteOption
+              "
+              *ngFor="let estudianteOption of estudiantesSharedCollection; trackBy: trackEstudianteById"
+            >
+              {{ estudianteOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" ss35Translate="simuSaber3Y5App.prueba.bancoPregunta" for="field_bancoPregunta">Banco Pregunta</label>
+          <select
+            class="form-control"
+            id="field_bancoPregunta"
+            data-cy="bancoPregunta"
+            name="bancoPregunta"
+            formControlName="bancoPregunta"
+          >
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                bancoPreguntaOption.id === editForm.get('bancoPregunta')!.value?.id
+                  ? editForm.get('bancoPregunta')!.value
+                  : bancoPreguntaOption
+              "
+              *ngFor="let bancoPreguntaOption of bancoPreguntasSharedCollection; trackBy: trackBancoPreguntaById"
+            >
+              {{ bancoPreguntaOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" ss35Translate="simuSaber3Y5App.prueba.sala" for="field_sala">Sala</label>
+          <select class="form-control" id="field_sala" data-cy="sala" name="sala" formControlName="sala">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="salaOption.id === editForm.get('sala')!.value?.id ? editForm.get('sala')!.value : salaOption"
+              *ngFor="let salaOption of salasSharedCollection; trackBy: trackSalaById"
+            >
+              {{ salaOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span ss35Translate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span ss35Translate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

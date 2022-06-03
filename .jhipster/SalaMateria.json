@@ -1,0 +1,37 @@
+{
+  "applications": ["SimuSaber3y5"],
+  "changelogDate": "20220603033636",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "sala_materia",
+  "fields": [
+    {
+      "fieldName": "idSala",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "idMateria",
+      "fieldType": "Integer"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "SalaMateria",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "sala",
+      "otherEntityRelationshipName": "salaMateria",
+      "relationshipName": "sala",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "materia",
+      "otherEntityRelationshipName": "salaMateria",
+      "relationshipName": "materia",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "service": "no"
+}

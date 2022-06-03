@@ -1,0 +1,45 @@
+{
+  "applications": ["SimuSaber3y5"],
+  "changelogDate": "20220603033136",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "materia",
+  "fields": [
+    {
+      "fieldName": "nombreMateria",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "maxlength"],
+      "fieldValidateRulesMaxlength": "256"
+    },
+    {
+      "fieldName": "numeroPreguntas",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "pregunta",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "maxlength"],
+      "fieldValidateRulesMaxlength": "256"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Materia",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "docenteMateria",
+      "otherEntityRelationshipName": "materia",
+      "relationshipName": "docenteMateria",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "salaMateria",
+      "otherEntityRelationshipName": "materia",
+      "relationshipName": "salaMateria",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "no"
+}

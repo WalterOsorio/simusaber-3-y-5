@@ -1,0 +1,38 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="docenteMateria">
+      <h2 data-cy="docenteMateriaDetailsHeading">
+        <span ss35Translate="simuSaber3Y5App.docenteMateria.detail.title">Docente Materia</span>
+      </h2>
+
+      <hr />
+
+      <ss-35-alert-error></ss-35-alert-error>
+
+      <ss-35-alert></ss-35-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span ss35Translate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ docenteMateria.id }}</span>
+        </dd>
+        <dt><span ss35Translate="simuSaber3Y5App.docenteMateria.idDocente">Id Docente</span></dt>
+        <dd>
+          <span>{{ docenteMateria.idDocente }}</span>
+        </dd>
+        <dt><span ss35Translate="simuSaber3Y5App.docenteMateria.idMateria">Id Materia</span></dt>
+        <dd>
+          <span>{{ docenteMateria.idMateria }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span ss35Translate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/docente-materia', docenteMateria.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span ss35Translate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

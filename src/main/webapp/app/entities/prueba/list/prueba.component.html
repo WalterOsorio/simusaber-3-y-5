@@ -1,0 +1,90 @@
+<div>
+  <h2 id="page-heading" data-cy="PruebaHeading">
+    <span ss35Translate="simuSaber3Y5App.prueba.home.title">Pruebas</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="loadAll()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span ss35Translate="simuSaber3Y5App.prueba.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-prueba"
+        [routerLink]="['/prueba/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span ss35Translate="simuSaber3Y5App.prueba.home.createLabel"> Create a new Prueba </span>
+      </button>
+    </div>
+  </h2>
+
+  <ss-35-alert-error></ss-35-alert-error>
+
+  <ss-35-alert></ss-35-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="pruebas?.length === 0">
+    <span ss35Translate="simuSaber3Y5App.prueba.home.notFound">No pruebas found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="pruebas && pruebas.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr>
+          <th scope="col"><span ss35Translate="global.field.id">ID</span></th>
+          <th scope="col"><span ss35Translate="simuSaber3Y5App.prueba.fechaAplicacion">Fecha Aplicacion</span></th>
+          <th scope="col"><span ss35Translate="simuSaber3Y5App.prueba.resultado">Resultado</span></th>
+          <th scope="col"><span ss35Translate="simuSaber3Y5App.prueba.retroalimentacion">Retroalimentacion</span></th>
+          <th scope="col"><span ss35Translate="simuSaber3Y5App.prueba.estudiante">Estudiante</span></th>
+          <th scope="col"><span ss35Translate="simuSaber3Y5App.prueba.bancoPregunta">Banco Pregunta</span></th>
+          <th scope="col"><span ss35Translate="simuSaber3Y5App.prueba.sala">Sala</span></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let prueba of pruebas; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/prueba', prueba.id, 'view']">{{ prueba.id }}</a>
+          </td>
+          <td>{{ prueba.fechaAplicacion | formatMediumDate }}</td>
+          <td>{{ prueba.resultado }}</td>
+          <td>{{ prueba.retroalimentacion }}</td>
+          <td>
+            <div *ngIf="prueba.estudiante">
+              <a [routerLink]="['/estudiante', prueba.estudiante?.id, 'view']">{{ prueba.estudiante?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="prueba.bancoPregunta">
+              <a [routerLink]="['/banco-pregunta', prueba.bancoPregunta?.id, 'view']">{{ prueba.bancoPregunta?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="prueba.sala">
+              <a [routerLink]="['/sala', prueba.sala?.id, 'view']">{{ prueba.sala?.id }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button type="submit" [routerLink]="['/prueba', prueba.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" ss35Translate="entity.action.view">View</span>
+              </button>
+
+              <button type="submit" [routerLink]="['/prueba', prueba.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" ss35Translate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(prueba)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" ss35Translate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

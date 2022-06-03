@@ -1,0 +1,25 @@
+<form *ngIf="prueba" name="deleteForm" (ngSubmit)="confirmDelete(prueba.id!)">
+  <div class="modal-header">
+    <h4 class="modal-title" data-cy="pruebaDeleteDialogHeading" ss35Translate="entity.delete.title">Confirm delete operation</h4>
+
+    <button type="button" class="btn-close" data-dismiss="modal" aria-hidden="true" (click)="cancel()">&times;</button>
+  </div>
+
+  <div class="modal-body">
+    <ss-35-alert-error></ss-35-alert-error>
+
+    <p id="ss-35-delete-prueba-heading" ss35Translate="simuSaber3Y5App.prueba.delete.question" [translateValues]="{ id: prueba.id }">
+      Are you sure you want to delete this Prueba?
+    </p>
+  </div>
+
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="cancel()">
+      <fa-icon icon="ban"></fa-icon>&nbsp;<span ss35Translate="entity.action.cancel">Cancel</span>
+    </button>
+
+    <button id="ss-35-confirm-delete-prueba" data-cy="entityConfirmDeleteButton" type="submit" class="btn btn-danger">
+      <fa-icon icon="times"></fa-icon>&nbsp;<span ss35Translate="entity.action.delete">Delete</span>
+    </button>
+  </div>
+</form>

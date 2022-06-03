@@ -1,0 +1,94 @@
+<div>
+  <h2 id="page-heading" data-cy="MateriaHeading">
+    <span ss35Translate="simuSaber3Y5App.materia.home.title">Materias</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="loadAll()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span ss35Translate="simuSaber3Y5App.materia.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-materia"
+        [routerLink]="['/materia/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span ss35Translate="simuSaber3Y5App.materia.home.createLabel"> Create a new Materia </span>
+      </button>
+    </div>
+  </h2>
+
+  <ss-35-alert-error></ss-35-alert-error>
+
+  <ss-35-alert></ss-35-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="materias?.length === 0">
+    <span ss35Translate="simuSaber3Y5App.materia.home.notFound">No materias found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="materias && materias.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr>
+          <th scope="col"><span ss35Translate="global.field.id">ID</span></th>
+          <th scope="col"><span ss35Translate="simuSaber3Y5App.materia.nombreMateria">Nombre Materia</span></th>
+          <th scope="col"><span ss35Translate="simuSaber3Y5App.materia.numeroPreguntas">Numero Preguntas</span></th>
+          <th scope="col"><span ss35Translate="simuSaber3Y5App.materia.pregunta">Pregunta</span></th>
+          <th scope="col"><span ss35Translate="simuSaber3Y5App.materia.docenteMateria">Docente Materia</span></th>
+          <th scope="col"><span ss35Translate="simuSaber3Y5App.materia.salaMateria">Sala Materia</span></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let materia of materias; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/materia', materia.id, 'view']">{{ materia.id }}</a>
+          </td>
+          <td>{{ materia.nombreMateria }}</td>
+          <td>{{ materia.numeroPreguntas }}</td>
+          <td>{{ materia.pregunta }}</td>
+          <td>
+            <div *ngIf="materia.docenteMateria">
+              <a [routerLink]="['/docente-materia', materia.docenteMateria?.id, 'view']">{{ materia.docenteMateria?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="materia.salaMateria">
+              <a [routerLink]="['/sala-materia', materia.salaMateria?.id, 'view']">{{ materia.salaMateria?.id }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/materia', materia.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" ss35Translate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/materia', materia.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" ss35Translate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(materia)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" ss35Translate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

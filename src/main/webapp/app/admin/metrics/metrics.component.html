@@ -1,0 +1,51 @@
+<div>
+  <h2>
+    <span id="metrics-page-heading" ss35Translate="metrics.title" data-cy="metricsPageHeading">Application Metrics</span>
+
+    <button class="btn btn-primary float-end" (click)="refresh()">
+      <fa-icon icon="sync"></fa-icon> <span ss35Translate="metrics.refresh.button">Refresh</span>
+    </button>
+  </h2>
+
+  <h3 ss35Translate="metrics.jvm.title">JVM Metrics</h3>
+
+  <div class="row" *ngIf="metrics && !updatingMetrics">
+    <ss-35-jvm-memory class="col-md-4" [updating]="updatingMetrics" [jvmMemoryMetrics]="metrics.jvm"></ss-35-jvm-memory>
+
+    <ss-35-jvm-threads class="col-md-4" [threads]="threads"></ss-35-jvm-threads>
+
+    <ss-35-metrics-system class="col-md-4" [updating]="updatingMetrics" [systemMetrics]="metrics.processMetrics"></ss-35-metrics-system>
+  </div>
+
+  <ss-35-metrics-garbagecollector
+    *ngIf="metrics && metricsKeyExists('garbageCollector')"
+    [updating]="updatingMetrics"
+    [garbageCollectorMetrics]="metrics.garbageCollector"
+  ></ss-35-metrics-garbagecollector>
+
+  <div class="well well-lg" *ngIf="updatingMetrics" ss35Translate="metrics.updating">Updating...</div>
+
+  <ss-35-metrics-request
+    *ngIf="metrics && metricsKeyExists('http.server.requests')"
+    [updating]="updatingMetrics"
+    [requestMetrics]="metrics['http.server.requests']"
+  ></ss-35-metrics-request>
+
+  <ss-35-metrics-endpoints-requests
+    *ngIf="metrics && metricsKeyExists('services')"
+    [updating]="updatingMetrics"
+    [endpointsRequestsMetrics]="metrics.services"
+  ></ss-35-metrics-endpoints-requests>
+
+  <ss-35-metrics-cache
+    *ngIf="metrics && metricsKeyExists('cache')"
+    [updating]="updatingMetrics"
+    [cacheMetrics]="metrics.cache"
+  ></ss-35-metrics-cache>
+
+  <ss-35-metrics-datasource
+    *ngIf="metrics && metricsKeyExistsAndObjectNotEmpty('databases')"
+    [updating]="updatingMetrics"
+    [datasourceMetrics]="metrics.databases"
+  ></ss-35-metrics-datasource>
+</div>

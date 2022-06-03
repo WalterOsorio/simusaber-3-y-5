@@ -1,0 +1,78 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="ss-35-administrador-heading"
+        data-cy="AdministradorCreateUpdateHeading"
+        ss35Translate="simuSaber3Y5App.administrador.home.createOrEditLabel"
+      >
+        Create or edit a Administrador
+      </h2>
+
+      <div>
+        <ss-35-alert-error></ss-35-alert-error>
+
+        <div class="row mb-3" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-label" ss35Translate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" ss35Translate="simuSaber3Y5App.administrador.nivelAcceso" for="field_nivelAcceso">Nivel Acceso</label>
+          <input
+            type="number"
+            class="form-control"
+            name="nivelAcceso"
+            id="field_nivelAcceso"
+            data-cy="nivelAcceso"
+            formControlName="nivelAcceso"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" ss35Translate="simuSaber3Y5App.administrador.userData" for="field_userData">User Data</label>
+          <select class="form-control" id="field_userData" data-cy="userData" name="userData" formControlName="userData">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="userDataOption.id === editForm.get('userData')!.value?.id ? editForm.get('userData')!.value : userDataOption"
+              *ngFor="let userDataOption of userDataCollection; trackBy: trackUserDataById"
+            >
+              {{ userDataOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" ss35Translate="simuSaber3Y5App.administrador.admiBancoP" for="field_admiBancoP">Admi Banco P</label>
+          <select class="form-control" id="field_admiBancoP" data-cy="admiBancoP" name="admiBancoP" formControlName="admiBancoP">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                admiBancoPOption.id === editForm.get('admiBancoP')!.value?.id ? editForm.get('admiBancoP')!.value : admiBancoPOption
+              "
+              *ngFor="let admiBancoPOption of admiBancoPSSharedCollection; trackBy: trackAdmiBancoPById"
+            >
+              {{ admiBancoPOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span ss35Translate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span ss35Translate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

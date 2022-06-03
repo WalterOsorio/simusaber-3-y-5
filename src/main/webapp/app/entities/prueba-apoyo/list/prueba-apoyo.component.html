@@ -1,0 +1,96 @@
+<div>
+  <h2 id="page-heading" data-cy="PruebaApoyoHeading">
+    <span ss35Translate="simuSaber3Y5App.pruebaApoyo.home.title">Prueba Apoyos</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="loadAll()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span ss35Translate="simuSaber3Y5App.pruebaApoyo.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-prueba-apoyo"
+        [routerLink]="['/prueba-apoyo/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span ss35Translate="simuSaber3Y5App.pruebaApoyo.home.createLabel"> Create a new Prueba Apoyo </span>
+      </button>
+    </div>
+  </h2>
+
+  <ss-35-alert-error></ss-35-alert-error>
+
+  <ss-35-alert></ss-35-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="pruebaApoyos?.length === 0">
+    <span ss35Translate="simuSaber3Y5App.pruebaApoyo.home.notFound">No pruebaApoyos found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="pruebaApoyos && pruebaApoyos.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr>
+          <th scope="col"><span ss35Translate="global.field.id">ID</span></th>
+          <th scope="col"><span ss35Translate="simuSaber3Y5App.pruebaApoyo.materia">Materia</span></th>
+          <th scope="col"><span ss35Translate="simuSaber3Y5App.pruebaApoyo.pregunta">Pregunta</span></th>
+          <th scope="col"><span ss35Translate="simuSaber3Y5App.pruebaApoyo.resultado">Resultado</span></th>
+          <th scope="col"><span ss35Translate="simuSaber3Y5App.pruebaApoyo.retroalimentacion">Retroalimentacion</span></th>
+          <th scope="col"><span ss35Translate="simuSaber3Y5App.pruebaApoyo.estudiante">Estudiante</span></th>
+          <th scope="col"><span ss35Translate="simuSaber3Y5App.pruebaApoyo.bancoPregunta">Banco Pregunta</span></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let pruebaApoyo of pruebaApoyos; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/prueba-apoyo', pruebaApoyo.id, 'view']">{{ pruebaApoyo.id }}</a>
+          </td>
+          <td>{{ pruebaApoyo.materia }}</td>
+          <td>{{ pruebaApoyo.pregunta }}</td>
+          <td>{{ pruebaApoyo.resultado }}</td>
+          <td>{{ pruebaApoyo.retroalimentacion }}</td>
+          <td>
+            <div *ngIf="pruebaApoyo.estudiante">
+              <a [routerLink]="['/estudiante', pruebaApoyo.estudiante?.id, 'view']">{{ pruebaApoyo.estudiante?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="pruebaApoyo.bancoPregunta">
+              <a [routerLink]="['/banco-pregunta', pruebaApoyo.bancoPregunta?.id, 'view']">{{ pruebaApoyo.bancoPregunta?.id }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/prueba-apoyo', pruebaApoyo.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" ss35Translate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/prueba-apoyo', pruebaApoyo.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" ss35Translate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(pruebaApoyo)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" ss35Translate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

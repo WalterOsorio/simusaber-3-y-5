@@ -1,0 +1,27 @@
+{
+  "simuSaber3Y5App": {
+    "docenteMateria": {
+      "home": {
+        "title": "Docente Materias",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Docente Materia",
+        "createOrEditLabel": "Crear o editar Docente Materia",
+        "notFound": "Ningún Docente Materias encontrado"
+      },
+      "created": "Un nuevo Docente Materia ha sido creado con el identificador {{ param }}",
+      "updated": "Un Docente Materia ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Docente Materia ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Docente Materia {{ id }}?"
+      },
+      "detail": {
+        "title": "Docente Materia"
+      },
+      "id": "ID",
+      "idDocente": "Id Docente",
+      "idMateria": "Id Materia",
+      "docente": "Docente",
+      "materia": "Materia"
+    }
+  }
+}

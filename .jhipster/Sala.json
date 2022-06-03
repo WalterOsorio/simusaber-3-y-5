@@ -1,0 +1,73 @@
+{
+  "applications": ["SimuSaber3y5"],
+  "changelogDate": "20220603033036",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "sala",
+  "fields": [
+    {
+      "fieldName": "estado",
+      "fieldType": "State",
+      "fieldValues": "Active (Activo),INACTIVE (Inactivo)"
+    },
+    {
+      "fieldName": "materia",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "maxlength"],
+      "fieldValidateRulesMaxlength": "256"
+    },
+    {
+      "fieldName": "numeroEstudiantes",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "resultados",
+      "fieldType": "Float"
+    },
+    {
+      "fieldName": "retroalimentacion",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "maxlength"],
+      "fieldValidateRulesMaxlength": "256"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Sala",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "prueba",
+      "otherEntityRelationshipName": "sala",
+      "relationshipName": "prueba",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "salaMateria",
+      "otherEntityRelationshipName": "sala",
+      "relationshipName": "salaMateria",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "docente",
+      "otherEntityRelationshipName": "sala",
+      "relationshipName": "docente",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "estudianteSala",
+      "otherEntityRelationshipName": "sala",
+      "relationshipName": "estudianteSala",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "estudiante",
+      "otherEntityRelationshipName": "sala",
+      "ownerSide": false,
+      "relationshipName": "estudiante",
+      "relationshipType": "many-to-many"
+    }
+  ],
+  "service": "no"
+}

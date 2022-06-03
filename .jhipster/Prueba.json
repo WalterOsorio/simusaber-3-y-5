@@ -1,0 +1,49 @@
+{
+  "applications": ["SimuSaber3y5"],
+  "changelogDate": "20220603033236",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "prueba",
+  "fields": [
+    {
+      "fieldName": "fechaAplicacion",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "resultado",
+      "fieldType": "Float"
+    },
+    {
+      "fieldName": "retroalimentacion",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "maxlength"],
+      "fieldValidateRulesMaxlength": "256"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Prueba",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "estudiante",
+      "otherEntityRelationshipName": "prueba",
+      "relationshipName": "estudiante",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "bancoPregunta",
+      "otherEntityRelationshipName": "prueba",
+      "relationshipName": "bancoPregunta",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "sala",
+      "otherEntityRelationshipName": "prueba",
+      "relationshipName": "sala",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "no"
+}

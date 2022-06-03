@@ -1,0 +1,36 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="salaMateria">
+      <h2 data-cy="salaMateriaDetailsHeading"><span ss35Translate="simuSaber3Y5App.salaMateria.detail.title">Sala Materia</span></h2>
+
+      <hr />
+
+      <ss-35-alert-error></ss-35-alert-error>
+
+      <ss-35-alert></ss-35-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span ss35Translate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ salaMateria.id }}</span>
+        </dd>
+        <dt><span ss35Translate="simuSaber3Y5App.salaMateria.idSala">Id Sala</span></dt>
+        <dd>
+          <span>{{ salaMateria.idSala }}</span>
+        </dd>
+        <dt><span ss35Translate="simuSaber3Y5App.salaMateria.idMateria">Id Materia</span></dt>
+        <dd>
+          <span>{{ salaMateria.idMateria }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span ss35Translate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/sala-materia', salaMateria.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span ss35Translate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

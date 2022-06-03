@@ -1,0 +1,58 @@
+{
+  "applications": ["SimuSaber3y5"],
+  "changelogDate": "20220603032636",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "user_data",
+  "fields": [
+    {
+      "fieldName": "numeroDocumento",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "maxlength"],
+      "fieldValidateRulesMaxlength": "256"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "UserData",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "tipoDocumento",
+      "otherEntityRelationshipName": "userData",
+      "ownerSide": true,
+      "relationshipName": "tipoDocumento",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "user",
+      "otherEntityRelationshipName": "userData",
+      "ownerSide": true,
+      "relationshipName": "user",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "docente",
+      "otherEntityRelationshipName": "userData",
+      "ownerSide": false,
+      "relationshipName": "docente",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "estudiante",
+      "otherEntityRelationshipName": "userData",
+      "ownerSide": false,
+      "relationshipName": "estudiante",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "administrador",
+      "otherEntityRelationshipName": "userData",
+      "ownerSide": false,
+      "relationshipName": "administrador",
+      "relationshipType": "one-to-one"
+    }
+  ],
+  "service": "no"
+}

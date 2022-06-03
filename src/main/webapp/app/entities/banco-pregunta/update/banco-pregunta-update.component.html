@@ -1,0 +1,161 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="ss-35-banco-pregunta-heading"
+        data-cy="BancoPreguntaCreateUpdateHeading"
+        ss35Translate="simuSaber3Y5App.bancoPregunta.home.createOrEditLabel"
+      >
+        Create or edit a Banco Pregunta
+      </h2>
+
+      <div>
+        <ss-35-alert-error></ss-35-alert-error>
+
+        <div class="row mb-3" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-label" ss35Translate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" ss35Translate="simuSaber3Y5App.bancoPregunta.descripcion" for="field_descripcion">Descripcion</label>
+          <input
+            type="text"
+            class="form-control"
+            name="descripcion"
+            id="field_descripcion"
+            data-cy="descripcion"
+            formControlName="descripcion"
+          />
+          <div *ngIf="editForm.get('descripcion')!.invalid && (editForm.get('descripcion')!.dirty || editForm.get('descripcion')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('descripcion')?.errors?.required"
+              ss35Translate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('descripcion')?.errors?.maxlength"
+              ss35Translate="entity.validation.maxlength"
+              [translateValues]="{ max: 256 }"
+            >
+              This field cannot be longer than 256 characters.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" ss35Translate="simuSaber3Y5App.bancoPregunta.fechaActualizacion" for="field_fechaActualizacion"
+            >Fecha Actualizacion</label
+          >
+          <div class="input-group">
+            <input
+              id="field_fechaActualizacion"
+              data-cy="fechaActualizacion"
+              type="text"
+              class="form-control"
+              name="fechaActualizacion"
+              ngbDatepicker
+              #fechaActualizacionDp="ngbDatepicker"
+              formControlName="fechaActualizacion"
+            />
+            <button type="button" class="btn btn-secondary" (click)="fechaActualizacionDp.toggle()">
+              <fa-icon icon="calendar-alt"></fa-icon>
+            </button>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" ss35Translate="simuSaber3Y5App.bancoPregunta.materia" for="field_materia">Materia</label>
+          <input type="text" class="form-control" name="materia" id="field_materia" data-cy="materia" formControlName="materia" />
+          <div *ngIf="editForm.get('materia')!.invalid && (editForm.get('materia')!.dirty || editForm.get('materia')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('materia')?.errors?.required"
+              ss35Translate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('materia')?.errors?.maxlength"
+              ss35Translate="entity.validation.maxlength"
+              [translateValues]="{ max: 256 }"
+            >
+              This field cannot be longer than 256 characters.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" ss35Translate="simuSaber3Y5App.bancoPregunta.numeroPreguntas" for="field_numeroPreguntas"
+            >Numero Preguntas</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="numeroPreguntas"
+            id="field_numeroPreguntas"
+            data-cy="numeroPreguntas"
+            formControlName="numeroPreguntas"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" ss35Translate="simuSaber3Y5App.bancoPregunta.pregunta" for="field_pregunta">Pregunta</label>
+          <input type="text" class="form-control" name="pregunta" id="field_pregunta" data-cy="pregunta" formControlName="pregunta" />
+          <div *ngIf="editForm.get('pregunta')!.invalid && (editForm.get('pregunta')!.dirty || editForm.get('pregunta')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('pregunta')?.errors?.required"
+              ss35Translate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('pregunta')?.errors?.maxlength"
+              ss35Translate="entity.validation.maxlength"
+              [translateValues]="{ max: 256 }"
+            >
+              This field cannot be longer than 256 characters.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" ss35Translate="simuSaber3Y5App.bancoPregunta.admiBancoP" for="field_admiBancoP">Admi Banco P</label>
+          <select class="form-control" id="field_admiBancoP" data-cy="admiBancoP" name="admiBancoP" formControlName="admiBancoP">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                admiBancoPOption.id === editForm.get('admiBancoP')!.value?.id ? editForm.get('admiBancoP')!.value : admiBancoPOption
+              "
+              *ngFor="let admiBancoPOption of admiBancoPSSharedCollection; trackBy: trackAdmiBancoPById"
+            >
+              {{ admiBancoPOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span ss35Translate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span ss35Translate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

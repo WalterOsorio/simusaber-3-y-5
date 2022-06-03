@@ -1,0 +1,177 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="ss-35-sala-heading" data-cy="SalaCreateUpdateHeading" ss35Translate="simuSaber3Y5App.sala.home.createOrEditLabel">
+        Create or edit a Sala
+      </h2>
+
+      <div>
+        <ss-35-alert-error></ss-35-alert-error>
+
+        <div class="row mb-3" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-label" ss35Translate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" ss35Translate="simuSaber3Y5App.sala.estado" for="field_estado">Estado</label>
+          <select class="form-control" name="estado" formControlName="estado" id="field_estado" data-cy="estado">
+            <option [ngValue]="null">{{ 'simuSaber3Y5App.State.null' | translate }}</option>
+            <option *ngFor="let state of stateValues" [value]="state">{{ 'simuSaber3Y5App.State.' + state | translate }}</option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" ss35Translate="simuSaber3Y5App.sala.materia" for="field_materia">Materia</label>
+          <input type="text" class="form-control" name="materia" id="field_materia" data-cy="materia" formControlName="materia" />
+          <div *ngIf="editForm.get('materia')!.invalid && (editForm.get('materia')!.dirty || editForm.get('materia')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('materia')?.errors?.required"
+              ss35Translate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('materia')?.errors?.maxlength"
+              ss35Translate="entity.validation.maxlength"
+              [translateValues]="{ max: 256 }"
+            >
+              This field cannot be longer than 256 characters.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" ss35Translate="simuSaber3Y5App.sala.numeroEstudiantes" for="field_numeroEstudiantes"
+            >Numero Estudiantes</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="numeroEstudiantes"
+            id="field_numeroEstudiantes"
+            data-cy="numeroEstudiantes"
+            formControlName="numeroEstudiantes"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" ss35Translate="simuSaber3Y5App.sala.resultados" for="field_resultados">Resultados</label>
+          <input
+            type="number"
+            class="form-control"
+            name="resultados"
+            id="field_resultados"
+            data-cy="resultados"
+            formControlName="resultados"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" ss35Translate="simuSaber3Y5App.sala.retroalimentacion" for="field_retroalimentacion"
+            >Retroalimentacion</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="retroalimentacion"
+            id="field_retroalimentacion"
+            data-cy="retroalimentacion"
+            formControlName="retroalimentacion"
+          />
+          <div
+            *ngIf="
+              editForm.get('retroalimentacion')!.invalid &&
+              (editForm.get('retroalimentacion')!.dirty || editForm.get('retroalimentacion')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('retroalimentacion')?.errors?.required"
+              ss35Translate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('retroalimentacion')?.errors?.maxlength"
+              ss35Translate="entity.validation.maxlength"
+              [translateValues]="{ max: 256 }"
+            >
+              This field cannot be longer than 256 characters.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" ss35Translate="simuSaber3Y5App.sala.salaMateria" for="field_salaMateria">Sala Materia</label>
+          <select class="form-control" id="field_salaMateria" data-cy="salaMateria" name="salaMateria" formControlName="salaMateria">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                salaMateriaOption.id === editForm.get('salaMateria')!.value?.id ? editForm.get('salaMateria')!.value : salaMateriaOption
+              "
+              *ngFor="let salaMateriaOption of salaMateriasSharedCollection; trackBy: trackSalaMateriaById"
+            >
+              {{ salaMateriaOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" ss35Translate="simuSaber3Y5App.sala.docente" for="field_docente">Docente</label>
+          <select class="form-control" id="field_docente" data-cy="docente" name="docente" formControlName="docente">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="docenteOption.id === editForm.get('docente')!.value?.id ? editForm.get('docente')!.value : docenteOption"
+              *ngFor="let docenteOption of docentesSharedCollection; trackBy: trackDocenteById"
+            >
+              {{ docenteOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" ss35Translate="simuSaber3Y5App.sala.estudianteSala" for="field_estudianteSala">Estudiante Sala</label>
+          <select
+            class="form-control"
+            id="field_estudianteSala"
+            data-cy="estudianteSala"
+            name="estudianteSala"
+            formControlName="estudianteSala"
+          >
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                estudianteSalaOption.id === editForm.get('estudianteSala')!.value?.id
+                  ? editForm.get('estudianteSala')!.value
+                  : estudianteSalaOption
+              "
+              *ngFor="let estudianteSalaOption of estudianteSalasSharedCollection; trackBy: trackEstudianteSalaById"
+            >
+              {{ estudianteSalaOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span ss35Translate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span ss35Translate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,29 @@
+{
+  "simuSaber3Y5App": {
+    "docente": {
+      "home": {
+        "title": "Docentes",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Docente",
+        "createOrEditLabel": "Crear o editar Docente",
+        "notFound": "Ningún Docentes encontrado"
+      },
+      "created": "Un nuevo Docente ha sido creado con el identificador {{ param }}",
+      "updated": "Un Docente ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Docente ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Docente {{ id }}?"
+      },
+      "detail": {
+        "title": "Docente"
+      },
+      "id": "ID",
+      "colegio": "Colegio",
+      "materia": "Materia",
+      "ciudad": "Ciudad",
+      "userData": "User Data",
+      "sala": "Sala",
+      "docenteMateria": "Docente Materia"
+    }
+  }
+}

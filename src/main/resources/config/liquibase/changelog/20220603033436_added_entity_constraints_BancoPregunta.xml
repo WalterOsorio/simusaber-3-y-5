@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd">
+    <!--
+        Added the constraints for entity BancoPregunta.
+    -->
+    <changeSet id="20220603033436-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="admi_bancop_id"
+                                 baseTableName="banco_pregunta"
+                                 constraintName="fk_banco_pregunta__admi_bancop_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="admi_banco_p"/>
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,27 @@
+{
+  "simuSaber3Y5App": {
+    "salaMateria": {
+      "home": {
+        "title": "Sala Materias",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Sala Materia",
+        "createOrEditLabel": "Create or edit a Sala Materia",
+        "notFound": "No Sala Materias found"
+      },
+      "created": "A new Sala Materia is created with identifier {{ param }}",
+      "updated": "A Sala Materia is updated with identifier {{ param }}",
+      "deleted": "A Sala Materia is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Sala Materia {{ id }}?"
+      },
+      "detail": {
+        "title": "Sala Materia"
+      },
+      "id": "ID",
+      "idSala": "Id Sala",
+      "idMateria": "Id Materia",
+      "sala": "Sala",
+      "materia": "Materia"
+    }
+  }
+}

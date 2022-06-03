@@ -1,0 +1,33 @@
+{
+  "simuSaber3Y5App": {
+    "sala": {
+      "home": {
+        "title": "Salas",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Sala",
+        "createOrEditLabel": "Create or edit a Sala",
+        "notFound": "No Salas found"
+      },
+      "created": "A new Sala is created with identifier {{ param }}",
+      "updated": "A Sala is updated with identifier {{ param }}",
+      "deleted": "A Sala is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Sala {{ id }}?"
+      },
+      "detail": {
+        "title": "Sala"
+      },
+      "id": "ID",
+      "estado": "Estado",
+      "materia": "Materia",
+      "numeroEstudiantes": "Numero Estudiantes",
+      "resultados": "Resultados",
+      "retroalimentacion": "Retroalimentacion",
+      "prueba": "Prueba",
+      "salaMateria": "Sala Materia",
+      "docente": "Docente",
+      "estudianteSala": "Estudiante Sala",
+      "estudiante": "Estudiante"
+    }
+  }
+}

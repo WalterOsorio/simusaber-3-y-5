@@ -1,0 +1,31 @@
+{
+  "simuSaber3Y5App": {
+    "bancoPregunta": {
+      "home": {
+        "title": "Banco Preguntas",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Banco Pregunta",
+        "createOrEditLabel": "Crear o editar Banco Pregunta",
+        "notFound": "Ningún Banco Preguntas encontrado"
+      },
+      "created": "Un nuevo Banco Pregunta ha sido creado con el identificador {{ param }}",
+      "updated": "Un Banco Pregunta ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Banco Pregunta ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Banco Pregunta {{ id }}?"
+      },
+      "detail": {
+        "title": "Banco Pregunta"
+      },
+      "id": "ID",
+      "descripcion": "Descripcion",
+      "fechaActualizacion": "Fecha Actualizacion",
+      "materia": "Materia",
+      "numeroPreguntas": "Numero Preguntas",
+      "pregunta": "Pregunta",
+      "prueba": "Prueba",
+      "pruebaApoyo": "Prueba Apoyo",
+      "admiBancoP": "Admi Banco P"
+    }
+  }
+}

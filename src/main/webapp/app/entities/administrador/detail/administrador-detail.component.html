@@ -1,0 +1,44 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="administrador">
+      <h2 data-cy="administradorDetailsHeading"><span ss35Translate="simuSaber3Y5App.administrador.detail.title">Administrador</span></h2>
+
+      <hr />
+
+      <ss-35-alert-error></ss-35-alert-error>
+
+      <ss-35-alert></ss-35-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span ss35Translate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ administrador.id }}</span>
+        </dd>
+        <dt><span ss35Translate="simuSaber3Y5App.administrador.nivelAcceso">Nivel Acceso</span></dt>
+        <dd>
+          <span>{{ administrador.nivelAcceso }}</span>
+        </dd>
+        <dt><span ss35Translate="simuSaber3Y5App.administrador.userData">User Data</span></dt>
+        <dd>
+          <div *ngIf="administrador.userData">
+            <a [routerLink]="['/user-data', administrador.userData?.id, 'view']">{{ administrador.userData?.id }}</a>
+          </div>
+        </dd>
+        <dt><span ss35Translate="simuSaber3Y5App.administrador.admiBancoP">Admi Banco P</span></dt>
+        <dd>
+          <div *ngIf="administrador.admiBancoP">
+            <a [routerLink]="['/admi-banco-p', administrador.admiBancoP?.id, 'view']">{{ administrador.admiBancoP?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span ss35Translate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/administrador', administrador.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span ss35Translate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,38 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="estudianteSala">
+      <h2 data-cy="estudianteSalaDetailsHeading">
+        <span ss35Translate="simuSaber3Y5App.estudianteSala.detail.title">Estudiante Sala</span>
+      </h2>
+
+      <hr />
+
+      <ss-35-alert-error></ss-35-alert-error>
+
+      <ss-35-alert></ss-35-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span ss35Translate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ estudianteSala.id }}</span>
+        </dd>
+        <dt><span ss35Translate="simuSaber3Y5App.estudianteSala.idEstudiante">Id Estudiante</span></dt>
+        <dd>
+          <span>{{ estudianteSala.idEstudiante }}</span>
+        </dd>
+        <dt><span ss35Translate="simuSaber3Y5App.estudianteSala.idSala">Id Sala</span></dt>
+        <dd>
+          <span>{{ estudianteSala.idSala }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span ss35Translate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/estudiante-sala', estudianteSala.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span ss35Translate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

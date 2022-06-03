@@ -1,0 +1,61 @@
+{
+  "applications": ["SimuSaber3y5"],
+  "changelogDate": "20220603033436",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "banco_pregunta",
+  "fields": [
+    {
+      "fieldName": "descripcion",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "maxlength"],
+      "fieldValidateRulesMaxlength": "256"
+    },
+    {
+      "fieldName": "fechaActualizacion",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "materia",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "maxlength"],
+      "fieldValidateRulesMaxlength": "256"
+    },
+    {
+      "fieldName": "numeroPreguntas",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "pregunta",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "maxlength"],
+      "fieldValidateRulesMaxlength": "256"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "BancoPregunta",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "prueba",
+      "otherEntityRelationshipName": "bancoPregunta",
+      "relationshipName": "prueba",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "pruebaApoyo",
+      "otherEntityRelationshipName": "bancoPregunta",
+      "relationshipName": "pruebaApoyo",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "admiBancoP",
+      "otherEntityRelationshipName": "bancoPregunta",
+      "relationshipName": "admiBancoP",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "no"
+}

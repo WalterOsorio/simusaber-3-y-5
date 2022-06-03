@@ -1,0 +1,51 @@
+{
+  "applications": ["SimuSaber3y5"],
+  "changelogDate": "20220603033336",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "prueba_apoyo",
+  "fields": [
+    {
+      "fieldName": "materia",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "maxlength"],
+      "fieldValidateRulesMaxlength": "256"
+    },
+    {
+      "fieldName": "pregunta",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "maxlength"],
+      "fieldValidateRulesMaxlength": "256"
+    },
+    {
+      "fieldName": "resultado",
+      "fieldType": "Float"
+    },
+    {
+      "fieldName": "retroalimentacion",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "maxlength"],
+      "fieldValidateRulesMaxlength": "256"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "PruebaApoyo",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "estudiante",
+      "otherEntityRelationshipName": "pruebaApoyo",
+      "relationshipName": "estudiante",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "bancoPregunta",
+      "otherEntityRelationshipName": "pruebaApoyo",
+      "relationshipName": "bancoPregunta",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "no"
+}

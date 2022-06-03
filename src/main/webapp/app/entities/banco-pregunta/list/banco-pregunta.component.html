@@ -1,0 +1,92 @@
+<div>
+  <h2 id="page-heading" data-cy="BancoPreguntaHeading">
+    <span ss35Translate="simuSaber3Y5App.bancoPregunta.home.title">Banco Preguntas</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="loadAll()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span ss35Translate="simuSaber3Y5App.bancoPregunta.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-banco-pregunta"
+        [routerLink]="['/banco-pregunta/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span ss35Translate="simuSaber3Y5App.bancoPregunta.home.createLabel"> Create a new Banco Pregunta </span>
+      </button>
+    </div>
+  </h2>
+
+  <ss-35-alert-error></ss-35-alert-error>
+
+  <ss-35-alert></ss-35-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="bancoPreguntas?.length === 0">
+    <span ss35Translate="simuSaber3Y5App.bancoPregunta.home.notFound">No bancoPreguntas found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="bancoPreguntas && bancoPreguntas.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr>
+          <th scope="col"><span ss35Translate="global.field.id">ID</span></th>
+          <th scope="col"><span ss35Translate="simuSaber3Y5App.bancoPregunta.descripcion">Descripcion</span></th>
+          <th scope="col"><span ss35Translate="simuSaber3Y5App.bancoPregunta.fechaActualizacion">Fecha Actualizacion</span></th>
+          <th scope="col"><span ss35Translate="simuSaber3Y5App.bancoPregunta.materia">Materia</span></th>
+          <th scope="col"><span ss35Translate="simuSaber3Y5App.bancoPregunta.numeroPreguntas">Numero Preguntas</span></th>
+          <th scope="col"><span ss35Translate="simuSaber3Y5App.bancoPregunta.pregunta">Pregunta</span></th>
+          <th scope="col"><span ss35Translate="simuSaber3Y5App.bancoPregunta.admiBancoP">Admi Banco P</span></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let bancoPregunta of bancoPreguntas; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/banco-pregunta', bancoPregunta.id, 'view']">{{ bancoPregunta.id }}</a>
+          </td>
+          <td>{{ bancoPregunta.descripcion }}</td>
+          <td>{{ bancoPregunta.fechaActualizacion | formatMediumDate }}</td>
+          <td>{{ bancoPregunta.materia }}</td>
+          <td>{{ bancoPregunta.numeroPreguntas }}</td>
+          <td>{{ bancoPregunta.pregunta }}</td>
+          <td>
+            <div *ngIf="bancoPregunta.admiBancoP">
+              <a [routerLink]="['/admi-banco-p', bancoPregunta.admiBancoP?.id, 'view']">{{ bancoPregunta.admiBancoP?.id }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/banco-pregunta', bancoPregunta.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" ss35Translate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/banco-pregunta', bancoPregunta.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" ss35Translate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(bancoPregunta)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" ss35Translate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

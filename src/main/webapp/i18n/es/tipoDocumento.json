@@ -1,0 +1,27 @@
+{
+  "simuSaber3Y5App": {
+    "tipoDocumento": {
+      "home": {
+        "title": "Tipo Documentos",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Tipo Documento",
+        "createOrEditLabel": "Crear o editar Tipo Documento",
+        "notFound": "Ningún Tipo Documentos encontrado"
+      },
+      "created": "Un nuevo Tipo Documento ha sido creado con el identificador {{ param }}",
+      "updated": "Un Tipo Documento ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Tipo Documento ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Tipo Documento {{ id }}?"
+      },
+      "detail": {
+        "title": "Tipo Documento"
+      },
+      "id": "ID",
+      "iniciales": "Iniciales",
+      "nombreDocumento": "Nombre Documento",
+      "estadoTipoDocumento": "Estado Tipo Documento",
+      "userData": "User Data"
+    }
+  }
+}

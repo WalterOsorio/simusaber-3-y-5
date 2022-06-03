@@ -1,0 +1,54 @@
+{
+  "applications": ["SimuSaber3y5"],
+  "changelogDate": "20220603032736",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "docente",
+  "fields": [
+    {
+      "fieldName": "colegio",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "maxlength"],
+      "fieldValidateRulesMaxlength": "256"
+    },
+    {
+      "fieldName": "materia",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "maxlength"],
+      "fieldValidateRulesMaxlength": "256"
+    },
+    {
+      "fieldName": "ciudad",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "maxlength"],
+      "fieldValidateRulesMaxlength": "256"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Docente",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "userData",
+      "otherEntityRelationshipName": "docente",
+      "ownerSide": true,
+      "relationshipName": "userData",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "sala",
+      "otherEntityRelationshipName": "docente",
+      "relationshipName": "sala",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "docenteMateria",
+      "otherEntityRelationshipName": "docente",
+      "relationshipName": "docenteMateria",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "no"
+}

@@ -1,0 +1,63 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="estudiante">
+      <h2 data-cy="estudianteDetailsHeading"><span ss35Translate="simuSaber3Y5App.estudiante.detail.title">Estudiante</span></h2>
+
+      <hr />
+
+      <ss-35-alert-error></ss-35-alert-error>
+
+      <ss-35-alert></ss-35-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span ss35Translate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ estudiante.id }}</span>
+        </dd>
+        <dt><span ss35Translate="simuSaber3Y5App.estudiante.grado">Grado</span></dt>
+        <dd>
+          <span>{{ estudiante.grado }}</span>
+        </dd>
+        <dt><span ss35Translate="simuSaber3Y5App.estudiante.colegio">Colegio</span></dt>
+        <dd>
+          <span>{{ estudiante.colegio }}</span>
+        </dd>
+        <dt><span ss35Translate="simuSaber3Y5App.estudiante.fechaNacimiento">Fecha Nacimiento</span></dt>
+        <dd>
+          <span>{{ estudiante.fechaNacimiento | formatMediumDate }}</span>
+        </dd>
+        <dt><span ss35Translate="simuSaber3Y5App.estudiante.ciudad">Ciudad</span></dt>
+        <dd>
+          <span>{{ estudiante.ciudad }}</span>
+        </dd>
+        <dt><span ss35Translate="simuSaber3Y5App.estudiante.userData">User Data</span></dt>
+        <dd>
+          <div *ngIf="estudiante.userData">
+            <a [routerLink]="['/user-data', estudiante.userData?.id, 'view']">{{ estudiante.userData?.id }}</a>
+          </div>
+        </dd>
+        <dt><span ss35Translate="simuSaber3Y5App.estudiante.sala">Sala</span></dt>
+        <dd>
+          <span *ngFor="let sala of estudiante.salas; let last = last">
+            <a [routerLink]="['/sala', sala?.id, 'view']">{{ sala.id }}</a
+            >{{ last ? '' : ', ' }}
+          </span>
+        </dd>
+        <dt><span ss35Translate="simuSaber3Y5App.estudiante.estudianteSala">Estudiante Sala</span></dt>
+        <dd>
+          <div *ngIf="estudiante.estudianteSala">
+            <a [routerLink]="['/estudiante-sala', estudiante.estudianteSala?.id, 'view']">{{ estudiante.estudianteSala?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span ss35Translate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/estudiante', estudiante.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span ss35Translate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

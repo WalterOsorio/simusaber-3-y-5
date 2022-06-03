@@ -1,0 +1,126 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="ss-35-tipo-documento-heading"
+        data-cy="TipoDocumentoCreateUpdateHeading"
+        ss35Translate="simuSaber3Y5App.tipoDocumento.home.createOrEditLabel"
+      >
+        Create or edit a Tipo Documento
+      </h2>
+
+      <div>
+        <ss-35-alert-error></ss-35-alert-error>
+
+        <div class="row mb-3" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-label" ss35Translate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" ss35Translate="simuSaber3Y5App.tipoDocumento.iniciales" for="field_iniciales">Iniciales</label>
+          <input type="text" class="form-control" name="iniciales" id="field_iniciales" data-cy="iniciales" formControlName="iniciales" />
+          <div *ngIf="editForm.get('iniciales')!.invalid && (editForm.get('iniciales')!.dirty || editForm.get('iniciales')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('iniciales')?.errors?.required"
+              ss35Translate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('iniciales')?.errors?.maxlength"
+              ss35Translate="entity.validation.maxlength"
+              [translateValues]="{ max: 12 }"
+            >
+              This field cannot be longer than 12 characters.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" ss35Translate="simuSaber3Y5App.tipoDocumento.nombreDocumento" for="field_nombreDocumento"
+            >Nombre Documento</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="nombreDocumento"
+            id="field_nombreDocumento"
+            data-cy="nombreDocumento"
+            formControlName="nombreDocumento"
+          />
+          <div
+            *ngIf="
+              editForm.get('nombreDocumento')!.invalid &&
+              (editForm.get('nombreDocumento')!.dirty || editForm.get('nombreDocumento')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('nombreDocumento')?.errors?.required"
+              ss35Translate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('nombreDocumento')?.errors?.maxlength"
+              ss35Translate="entity.validation.maxlength"
+              [translateValues]="{ max: 50 }"
+            >
+              This field cannot be longer than 50 characters.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" ss35Translate="simuSaber3Y5App.tipoDocumento.estadoTipoDocumento" for="field_estadoTipoDocumento"
+            >Estado Tipo Documento</label
+          >
+          <select
+            class="form-control"
+            name="estadoTipoDocumento"
+            formControlName="estadoTipoDocumento"
+            id="field_estadoTipoDocumento"
+            data-cy="estadoTipoDocumento"
+          >
+            <option [ngValue]="null">{{ 'simuSaber3Y5App.State.null' | translate }}</option>
+            <option *ngFor="let state of stateValues" [value]="state">{{ 'simuSaber3Y5App.State.' + state | translate }}</option>
+          </select>
+          <div
+            *ngIf="
+              editForm.get('estadoTipoDocumento')!.invalid &&
+              (editForm.get('estadoTipoDocumento')!.dirty || editForm.get('estadoTipoDocumento')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('estadoTipoDocumento')?.errors?.required"
+              ss35Translate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span ss35Translate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span ss35Translate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

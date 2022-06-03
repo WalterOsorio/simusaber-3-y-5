@@ -1,0 +1,84 @@
+<div>
+  <h2 id="page-heading" data-cy="TipoDocumentoHeading">
+    <span ss35Translate="simuSaber3Y5App.tipoDocumento.home.title">Tipo Documentos</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="loadAll()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span ss35Translate="simuSaber3Y5App.tipoDocumento.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-tipo-documento"
+        [routerLink]="['/tipo-documento/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span ss35Translate="simuSaber3Y5App.tipoDocumento.home.createLabel"> Create a new Tipo Documento </span>
+      </button>
+    </div>
+  </h2>
+
+  <ss-35-alert-error></ss-35-alert-error>
+
+  <ss-35-alert></ss-35-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="tipoDocumentos?.length === 0">
+    <span ss35Translate="simuSaber3Y5App.tipoDocumento.home.notFound">No tipoDocumentos found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="tipoDocumentos && tipoDocumentos.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr>
+          <th scope="col"><span ss35Translate="global.field.id">ID</span></th>
+          <th scope="col"><span ss35Translate="simuSaber3Y5App.tipoDocumento.iniciales">Iniciales</span></th>
+          <th scope="col"><span ss35Translate="simuSaber3Y5App.tipoDocumento.nombreDocumento">Nombre Documento</span></th>
+          <th scope="col"><span ss35Translate="simuSaber3Y5App.tipoDocumento.estadoTipoDocumento">Estado Tipo Documento</span></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let tipoDocumento of tipoDocumentos; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/tipo-documento', tipoDocumento.id, 'view']">{{ tipoDocumento.id }}</a>
+          </td>
+          <td>{{ tipoDocumento.iniciales }}</td>
+          <td>{{ tipoDocumento.nombreDocumento }}</td>
+          <td ss35Translate="{{ 'simuSaber3Y5App.State.' + tipoDocumento.estadoTipoDocumento }}">
+            {{ tipoDocumento.estadoTipoDocumento }}
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/tipo-documento', tipoDocumento.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" ss35Translate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/tipo-documento', tipoDocumento.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" ss35Translate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(tipoDocumento)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" ss35Translate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

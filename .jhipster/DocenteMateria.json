@@ -1,0 +1,37 @@
+{
+  "applications": ["SimuSaber3y5"],
+  "changelogDate": "20220603033536",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "docente_materia",
+  "fields": [
+    {
+      "fieldName": "idDocente",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "idMateria",
+      "fieldType": "Integer"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "DocenteMateria",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "docente",
+      "otherEntityRelationshipName": "docenteMateria",
+      "relationshipName": "docente",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "materia",
+      "otherEntityRelationshipName": "docenteMateria",
+      "relationshipName": "materia",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "service": "no"
+}
